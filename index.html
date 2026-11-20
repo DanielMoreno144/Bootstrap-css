@@ -1,82 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>CSS con Bootstrap</title>
+    <title>Fundamentos de CSS</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">CSS básico</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#t21">2.1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t22">2.2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t23">2.3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t24">2.4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t25">2.5</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t26">2.6</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t27">2.7</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t28">2.8</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#t29">2.9</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="encabezado">
+        <div class="container">
+            <h1>Fundamentos de CSS</h1>
+            <p>Resumen de los temas 2.1 al 2.9</p>
+        </div>
+    </header>
+
+    <main class="container contenido">
+
+        <section id="t21">
+            <h2>2.1 Estructura y sintaxis</h2>
+            <p>CSS utiliza selectores, propiedades y valores para darle estilo a una página web.</p>
+
+            <pre><code>selector {
+    propiedad: valor;
+}
+
+h1 {
+    color: teal;
+    font-size: 2rem;
+}</code></pre>
+        </section>
+
+        <section id="t22">
+            <h2>2.2 Tipos de incorporación de CSS</h2>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">CSS interno</div>
+                        <div class="card-body">
+                            <p>Se escribe dentro de la etiqueta style en el head.</p>
+                            <pre><code>&lt;style&gt;
+    p {
+        color: red;
+    }
+&lt;/style&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">CSS externo</div>
+                        <div class="card-body">
+                            <p>Se utiliza un archivo independiente con extensión .css.</p>
+                            <pre><code>&lt;link rel="stylesheet"
+href="estilos.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">CSS en línea</div>
+                        <div class="card-body">
+                            <p>Se agrega directamente en la etiqueta HTML.</p>
+                            <pre><code>&lt;p style="color: red;"&gt;
+    Hola
+&lt;/p&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="t23">
+            <h2>2.3 Indentación, herencia y comentarios</h2>
+
+            <ul>
+                <li><strong>Indentación:</strong> permite organizar el código y facilitar su lectura.</li>
+                <li><strong>Herencia:</strong> algunas propiedades, como color y font-family, pasan del elemento padre a sus hijos.</li>
+                <li><strong>Comentarios:</strong> sirven para dejar notas dentro del código.</li>
+            </ul>
+
+            <pre><code>/* Comentario en CSS */
+
+body {
+    color: #333;
+}</code></pre>
+        </section>
+
+        <section id="t24">
+            <h2>2.4 Niveles de especificidad</h2>
+            <p>La especificidad determina qué estilo se aplica cuando existen varias reglas para un mismo elemento.</p>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Selector</th>
+                        <th>Peso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Estilo en línea</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr>
+                        <td>ID (#menu)</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Clases y pseudo-clases</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Etiquetas y pseudo-elementos</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><code>!important</code> permite dar prioridad a una declaración, aunque es mejor evitar su uso innecesario.</p>
+        </section>
+
+        <section id="t25">
+            <h2>2.5 Flexbox, Grid y Breakpoints</h2>
+            <p>Bootstrap utiliza un sistema de 12 columnas que permite organizar los elementos dependiendo del tamaño de la pantalla.</p>
+
+            <div class="row g-2 text-center mb-4">
+                <div class="col-12 col-md-6 col-lg-3"><div class="numero">1</div></div>
+                <div class="col-12 col-md-6 col-lg-3"><div class="numero">2</div></div>
+                <div class="col-12 col-md-6 col-lg-3"><div class="numero">3</div></div>
+                <div class="col-12 col-md-6 col-lg-3"><div class="numero">4</div></div>
+            </div>
+
+            <p>También se puede utilizar Flexbox para distribuir elementos en una misma fila.</p>
+
+            <div class="d-flex justify-content-between align-items-center border p-3 mb-4">
+                <span class="badge bg-secondary">A</span>
+                <span class="badge bg-secondary">B</span>
+                <span class="badge bg-secondary">C</span>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Breakpoint</th>
+                        <th>Prefijo</th>
+                        <th>Tamaño</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Extra small</td><td>Ninguno</td><td>0px</td></tr>
+                    <tr><td>Small</td><td>sm</td><td>576px</td></tr>
+                    <tr><td>Medium</td><td>md</td><td>768px</td></tr>
+                    <tr><td>Large</td><td>lg</td><td>992px</td></tr>
+                    <tr><td>Extra large</td><td>xl</td><td>1200px</td></tr>
+                    <tr><td>XXL</td><td>xxl</td><td>1400px</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="t26">
+            <h2>2.6 Media Queries</h2>
+            <p>Permiten cambiar los estilos de una página según el tamaño de la pantalla.</p>
+
+            <pre><code>@media (min-width: 768px) {
+    .caja {
+        background: royalblue;
+    }
+}</code></pre>
+
+            <div class="alert alert-info">
+                <span class="d-md-none">Estás utilizando una pantalla menor a 768px.</span>
+                <span class="d-none d-md-inline">Estás utilizando una pantalla de 768px o más.</span>
+            </div>
+        </section>
+
+        <section id="t27">
+            <h2>2.7 Pseudo-elementos</h2>
+            <p>Permiten modificar partes específicas de un elemento sin necesidad de agregar más etiquetas HTML.</p>
+
+            <p class="texto-before">Texto con ::before</p>
+            <p class="texto-after">Texto con ::after</p>
+            <p class="texto-letra">Texto con ::first-letter</p>
+
+            <pre><code>p::before {
+    content: "→ ";
+}
+
+p::after {
+    content: " ✓";
+}
+
+p::first-letter {
+    font-size: 2.5rem;
+}</code></pre>
+        </section>
+
+        <section id="t28">
+            <h2>2.8 Pseudo-clases</h2>
+            <p>Se utilizan para aplicar estilos dependiendo del estado o la posición de un elemento.</p>
+
+            <button class="btn btn-outline-dark efecto-hover mb-3">
+                Pasa el cursor (:hover)
+            </button>
+
+            <ul class="lista-ejemplo list-unstyled border">
+                <li>Primero (:first-child)</li>
+                <li>Segundo (:nth-child(even))</li>
+                <li>Tercero</li>
+                <li>Cuarto (:nth-child(even))</li>
+            </ul>
+
+            <pre><code>button:hover {
+    background: teal;
+}
+
+li:first-child {
+    font-weight: bold;
+}
+
+li:nth-child(even) {
+    background: #eee;
+}</code></pre>
+        </section>
+
+        <section id="t29">
+            <h2>2.9 Z-index</h2>
+            <p>Esta propiedad permite controlar qué elemento aparece delante o detrás cuando varios elementos se superponen.</p>
+
+            <div class="zona-cajas">
+                <div class="caja azul">z-index: 1</div>
+                <div class="caja roja">z-index: 3</div>
+                <div class="caja verde">z-index: 2</div>
+            </div>
+
+            <p>La caja roja queda encima porque tiene un valor de z-index mayor.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>CSS básico con Bootstrap 5</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<nav class="navbar sticky-top navbar-expand" id="topbar">
-  <div class="container-fluid px-0 gap-2">
-    <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#indexCanvas" aria-controls="indexCanvas" aria-label="Abrir índice de temas">☰ Temas</button>
-    <a class="navbar-brand me-auto" href="#inicio">CSS<span>.</span>fundamentos</a>
-    <span class="badge bg-soft d-none d-sm-inline-block" id="bpBadge">xs</span>
-    <div class="dropdown">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Ir a…</button>
-      <ul class="dropdown-menu dropdown-menu-end" id="quickJump"></ul>
-    </div>
-    <button class="btn btn-outline-secondary" id="themeBtn" type="button" aria-label="Cambiar tema claro u oscuro">◐</button>
-  </div>
-</nav>
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="indexCanvas" aria-labelledby="indexCanvasLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="indexCanvasLabel">Temas del módulo 2</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-  </div>
-  <div class="offcanvas-body"><div class="list-group list-group-flush" id="indexMobile"></div></div>
-</div>
-
-<header class="hero" id="inicio">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb mb-3">
-      <li class="breadcrumb-item"><a href="#inicio">Desarrollo web</a></li>
-      <li class="breadcrumb-item"><a href="#inicio">Módulo 2</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Hojas de estilo en cascada</li>
-    </ol>
-  </nav>
-  <div class="row align-items-end g-4">
-    <div class="col-lg-8">
-      <h1>CSS desde la <em>estructura</em> hasta el <em>z-index</em></h1>
-      <p class="lead mt-3">Nueve temas del módulo 2, explicados con ejemplos en vivo y construidos con Bootstrap 5: sintaxis, formas de incorporar CSS, herencia, especificidad, flexbox, media queries, pseudo-elementos, pseudo-clases y apilamiento.</p>
-      <div class="d-flex flex-wrap gap-2 mt-4">
-        <a href="#t21" class="btn btn-primary btn-lg">Empezar por 2.1</a>
-        <button class="btn btn-outline-secondary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#modalGuia">Cómo usar esta página</button>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="demo">
-        <div class="demo-title">Avance de lectura</div>
-        <div class="progress mb-2" role="progressbar" aria-label="Avance de lectura" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" id="readBar" style="width:0%">0%</div></div>
-        <div class="d-flex justify-content-between small text-muted"><span>9 temas</span><span id="readTopic">2.1</span></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<div class="modal fade" id="modalGuia" tabindex="-1" aria-labelledby="modalGuiaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="modalGuiaLabel">Cómo usar esta página</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button></div>
-      <div class="modal-body">
-        <ul class="mb-0">
-          <li>Cada tema tiene un ejemplo que puedes manipular: botones, listas desplegables, controles deslizantes y campos de texto.</li>
-          <li>Los bloques de código tienen un botón <strong>Copiar</strong>.</li>
-          <li>El botón ◐ de la barra superior cambia entre tema claro y oscuro.</li>
-          <li>Cambia el ancho de la ventana para ver cómo responden los breakpoints de Bootstrap.</li>
-        </ul>
-      </div>
-      <div class="modal-footer"><button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button></div>
-    </div>
-  </div>
-</div>
-    <div class="d-flex"><div class="toast-body" id="copyToastBody">Código </div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button></div>
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
-
-</body></html>
